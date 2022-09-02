@@ -1,0 +1,43 @@
+.close{
+    overflow: hidden;
+    height: 0;
+}
+
+
+.btn-collapse{
+    background: linear-gradient(180deg, #8C4378 0%, #4F2A5B 100%);
+    border-radius: 15px;
+    border: 0;
+    padding: 35px 35px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+}
+
+.btn-collapse:hover{
+    opacity: 0.8 ;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.type-total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    align-items: flex-end;
+    margin-bottom: 7px;
+    font-weight: 200;
+}
+
+.goal-balance{
+    font-size: 15px;
+    font-weight: 100;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

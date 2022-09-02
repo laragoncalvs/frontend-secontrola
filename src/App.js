@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Container, DivSaldo, Main, MainContainer, SaldoText, SaldoTotalText } from "./components/GlobalComponents";
+import TabNav from "./components/TabNav";
+import Despesas from "./pages/Despesas";
+import Receita from "./pages/Receita";
 
-function App() {
+
+const App = () => {
+  const [activeDespesa, setActiveDespesa] = useState(true);
+  const [activeReceita, setActiveReceita] = useState(false);
+
+
+  function handleClickTabDespesa() {
+    if (!activeDespesa) {
+      setActiveDespesa(true)
+    }
+  }
+  function handleClickTabReceita() {
+    if (activeDespesa) {
+      setActiveDespesa(false)
+      setActiveReceita(true)
+    }
+  }
+
+  let borderDespesa = '';
+  let borderReceita = '';
+
+  let fontDespesa = 200;
+  let fontReceita = 200;
+
+  { activeDespesa ? borderDespesa = '4px solid #B0298B' : borderReceita = '4px solid #B0298B' }
+  { activeDespesa ? fontDespesa = 500 : fontReceita = 500 }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container>
+      <MainContainer>
+        <Main>
+        <DivSaldo >
+            <SaldoText>R$ </SaldoText>
+            <SaldoTotalText>saldo atual</SaldoTotalText>
+        </DivSaldo>
+          <TabNav onClickDespesas={handleClickTabDespesa} onClickReceita={handleClickTabReceita} borderBottomDespesa={borderDespesa} borderBottomReceita={borderReceita} fontDespesa ={fontDespesa} fontReceita={fontReceita}/>
+                    {activeDespesa ? <Despesas /> : <Receita/>}
+                    <div style={{height: '200px'}}></div>
+        </Main>
+      </MainContainer>
+    </Container>
+  )
 }
+
+
 
 export default App;
