@@ -26,11 +26,35 @@ const ButtonText = styled.p`
     font-weight: 200;
 `
 
-const TabNav = ({onClickDespesas, onClickReceita, borderBottomDespesa, borderBottomReceita, fontDespesa, fontReceita }) => {
-    return(
+const TabNav = ({ setActiveDespesa, setActiveReceita, activeDespesa }) => {
+
+
+    let borderDespesa = '';
+    let borderReceita = '';
+
+    let fontDespesa = 200;
+    let fontReceita = 200;
+
+    { activeDespesa ? borderDespesa = '4px solid #B0298B' : borderReceita = '4px solid #B0298B' }
+    { activeDespesa ? fontDespesa = 500 : fontReceita = 500 }
+
+    function handleClickTabDespesa() {
+        if (!activeDespesa) {
+            setActiveDespesa(true)
+        }
+    }
+
+    function handleClickTabReceita() {
+        if (activeDespesa) {
+            setActiveDespesa(false)
+            setActiveReceita(true)
+        }
+    }
+
+    return (
         <NavTab>
-            <ButtonTab style={{borderBottom: borderBottomDespesa, }} onClick={onClickDespesas}><ButtonText style={{fontWeight: fontDespesa }}>Despesas</ButtonText></ButtonTab>
-            <ButtonTab style={{borderBottom: borderBottomReceita, }} onClick={onClickReceita}><ButtonText style={{ fontWeight: fontReceita}}>Receita</ButtonText></ButtonTab>
+            <ButtonTab style={{ borderBottom: borderDespesa, }} onClick={handleClickTabDespesa}><ButtonText style={{ fontWeight: fontDespesa }}>Despesas</ButtonText></ButtonTab>
+            <ButtonTab style={{ borderBottom: borderReceita, }} onClick={handleClickTabReceita}><ButtonText style={{ fontWeight: fontReceita }}>Receita</ButtonText></ButtonTab>
         </NavTab>
     )
 }

@@ -1,83 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FormReceita from "../../components/FormReceita";
 import { Text } from "../../components/GlobalComponents";
 import TableReceita from "../../components/TableReceita";
 import api from "../../services/api";
+const Receita = ({allIncomes, name, setName, income, setIncome, incomeDate, setIncomeDate, setAllIncomes}) => {
 
-const Receita = () => {
-
-    const [allIncomes, setAllIncomes] = useState([]);
-    const [description, setDescription] = useState('');
-    const [income, setIncome] = useState();
-    const [date, setDate] = useState('');
-
-    async function handleSubmit(e) {
+    async function handleSubmitIncomes(e) {
         e.preventDefault();
-
+  
         const res = await api.post('/incomes', {
-            description,
+            name,
             income,
-            date
+            incomeDate
         })
-
-        setDescription('');
-        setIncome();
-        setDate('');
-
+  
+        setName('');
+        setIncome('');
+        setIncomeDate('');
+  
         setAllIncomes([...allIncomes, res.data])
     }
 
-    async function handleDelete(id) {
-        const res = await api.delete(`/incomes/${id}`)
-
-        if (res) {
-            setAllIncomes(allIncomes.filter(n => n._id !== id))
-        }
-
-    }
-    function sumExpense(array) {
+    function sumIncomes(array) {
         var soma = 0
         for (var i = 0; i < array.length; i++) {
-            soma += array[i].income
+          soma += array[i].income
         }
         return soma;
-    }
-
-
-    async function getAllIncomes() {
-        const res = await api.get('/incomes')
-        setAllIncomes(res.data)
-    }
-
-    console.log('rendeirizou')
-
-
-
-    useEffect(() => {
-        getAllIncomes()
-    }, [])
-
+      }
+  
     return (
         <div style={{width: '100%'}}>
             <Text>Novo faturamento</Text>
             <FormReceita
-                handleSubmitReceita={handleSubmit}
-                description={description}
-                setDescription={e => setDescription(e.target.value)}
+                handleSubmitReceita={handleSubmitIncomes}
+                name={name}
+                setName={e => setName(e.target.value)}
                 income={income}
                 setIncome={e => setIncome(e.target.value)}
-                date={date}
-                setDate={e => setDate(e.target.value)}
+                incomeDate={incomeDate}
+                setIncomeDate={e => setIncomeDate(e.target.value)}
             />
             <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
 
             <Text>Minha receita</Text>
-            <Text>R$ {sumExpense(allIncomes).toString().replace('.', ',')}</Text>
+            <Text>R$ {sumIncomes(allIncomes).toString().replace('.', ',')}</Text>
             </div>
             <TableReceita
                 allIncomes={allIncomes}
-                handleDelete={handleDelete}
-
+                setAllIncomes={setAllIncomes}
             />
         </div>
     )

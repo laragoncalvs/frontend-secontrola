@@ -16,10 +16,15 @@ const MainContainer = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 5%;
+
+    @media(max-width: 768px){
+        width: 100%
+        
+    }
 `
 
 const Main = styled.div`
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,15 +43,27 @@ padding: 135px;
 color: white;
 display: flex;
 flex-direction: column;
-align-items: center
+align-items: center;
+
+@media (max-width: 768px){
+        padding: 70px;
+    }
 `
 const SaldoText = styled.div`
     font-weight: 400;
 font-size: 80px;
+    @media (max-width: 768px){
+        font-size: 35px
+    }
+
 `
 const SaldoTotalText = styled.div`
 font-weight: 200;
 font-size: 36px;
+@media (max-width: 768px){
+        font-size: 22px;
+        margin-top: 5px;
+    }
 `
 
 export { Container, Main, MainContainer, Text, DivSaldo, SaldoText, SaldoTotalText }

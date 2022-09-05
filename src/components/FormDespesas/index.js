@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Input, InputLabelContainer, InputsContainer, Label, Select } from "../FormComponents";
-import { Text } from "../GlobalComponents";
 
 const FormDespesas = ({handleSubmitFormDespesas, type, onChangeType, allExpensesTypes, description, onChangeDescription, date, onChangeDate, expense, onChangeExpense}) => {
 
     
-
+    console.log(expense)
     return (
         <form onSubmit={handleSubmitFormDespesas}>
      
@@ -18,13 +17,13 @@ const FormDespesas = ({handleSubmitFormDespesas, type, onChangeType, allExpenses
                         {
                             allExpensesTypes.map(
                                 data => (
-                                    <option >{data.type}</option>
+                                    <option >{data.expenseType}</option>
                                 )
                             )
                         }
                     </Select>
                 </InputLabelContainer>
-                <InputLabelContainer style={{ width: '64%' }}>
+                <InputLabelContainer style={{ width: '64%'  }}>
                     <Label>Descrição</Label>
                     <Input placeholder='Compras supermercado...' type='text' value={description} onChange={onChangeDescription} />
                 </InputLabelContainer>

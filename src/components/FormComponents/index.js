@@ -30,6 +30,10 @@ const InputsContainer = styled.div`
     justify-content: space-between;
     margin-bottom: 35px;
     align-items: flex-end;
+    @media (max-width: 768px){
+        flex-direction: column;
+        align-items: center
+    }
     `
 
 const Select = styled.select`

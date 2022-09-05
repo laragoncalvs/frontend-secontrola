@@ -1,9 +1,8 @@
 
 import React from "react"
 import { Button, Input, InputLabelContainer, InputsContainer, Label } from "../FormComponents";
-import { Text } from "../GlobalComponents";
 
-const FormReceita = ({ handleSubmitReceita, description, setDescription, income, setIncome, date, setDate}) => {
+const FormReceita = ({ handleSubmitReceita, name, setName, income, setIncome, incomeDate, setIncomeDate}) => {
 
     return (
         <div style={{ width: '100%' }}>
@@ -13,7 +12,7 @@ const FormReceita = ({ handleSubmitReceita, description, setDescription, income,
                 <InputLabelContainer style={{width: '40%'}}>
 
                     <Label>Descrição</Label>
-                    <Input placeholder='Salário...' value={description} onChange={setDescription}/>
+                    <Input placeholder='Salário...' value={name} onChange={setName}/>
                 </InputLabelContainer>
                 <InputLabelContainer style={{width: '25%'}}>
 
@@ -22,7 +21,7 @@ const FormReceita = ({ handleSubmitReceita, description, setDescription, income,
                 </InputLabelContainer>
                 <InputLabelContainer style={{width: '30%'}}>
                     <Label>Data</Label>
-                    <Input  type='date'  value={date} onChange={setDate} />
+                    <Input  type='date'  value={incomeDate} onChange={setIncomeDate} />
                 </InputLabelContainer>
                     
                 </InputsContainer>

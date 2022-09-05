@@ -8,6 +8,8 @@
         "linear-gradient(180deg, #1E5777 0%, #324D5B 100%)",
         "linear-gradient(180deg, #244A83 0%, #1F304A 100%)",
         "linear-gradient(180deg, #523CA5 0%, #382E5E 100%)",
+        "linear-gradient(180deg, #1E5777 0%, #324D5B 100%)",
+        "linear-gradient(180deg, #244A83 0%, #1F304A 100%)",
         "linear-gradient(180deg, #523CA5 0%, #382E5E 100%)",
         "linear-gradient(180deg, #523CA5 0%, #382E5E 100%)"
     ] ,
@@ -21,6 +23,7 @@
         "#324D5B",
         "#1F304A",
         "#382E5E",
+        "#324D5B",
         "#4F2A5B",
         "#324D5B",
         "#1F304A",
